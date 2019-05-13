@@ -1,0 +1,80 @@
+#include <stdio.h>
+#include <malloc.h>
+#pragma warning(disable : 4996)
+void insert1();
+void print_list();
+
+void main()
+{
+	printf("***********************************************\n");
+	printf("            Linked_list 프로그램             \n");
+	printf("***********************************************\n");
+
+	printf("1. 연결리스트 앞에 데이터 삽입\n");
+	printf("2. 입력된 연결리스트 출력\n");
+	printf("3. 종료\n");
+
+	int a = 0, b;
+	while (a != 3)
+	{
+		printf("메뉴에 있는 번호를 고르시오 : ");
+		scanf("%d", &a);
+		printf("\n");
+		switch (a)
+		{
+		case 1:
+			printf("저장할 수를 입력하시오 : ");
+			scanf("%d", &b);
+			insert1(b);
+			break;
+		case 2:
+			
+			print_list();
+			printf("\n");
+			break;
+
+		default:
+			break;
+		}
+
+
+
+	}
+
+
+
+}
+
+typedef struct cell
+{
+	int element;
+	int num;
+	struct cell *next;
+
+}node;
+node *head;
+
+void insert1(int val)
+{
+	node *tmp;
+	tmp = (node *)malloc(sizeof(node));
+	tmp->element = val;
+	tmp->next = head;
+	head = tmp;
+
+}
+
+
+void print_list()
+{
+	node *tmp = head;
+
+	while (tmp != NULL)
+	{
+		printf("%5d", tmp->element);
+		tmp = tmp->next;
+	}
+
+
+
+}
